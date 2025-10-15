@@ -79,8 +79,8 @@
 
     #btnNo {
       background-color: #f44336;
-      position: fixed; /* Fijo a la ventana, no al contenedor */
-      transition: all 0.3s ease;
+      position: absolute;
+      transition: all 0.4s ease;
     }
 
     #btnNo:hover {
@@ -138,20 +138,15 @@
       const btnWidth = btnNo.offsetWidth;
       const btnHeight = btnNo.offsetHeight;
 
-      const padding = 20; // margen para mantenerlo visible
+      const maxX = window.innerWidth - btnWidth - 20;
+      const maxY = window.innerHeight - btnHeight - 20;
 
-      // límites seguros dentro de la ventana
-      const maxX = window.innerWidth - btnWidth - padding;
-      const maxY = window.innerHeight - btnHeight - padding;
+      const newX = Math.random() * maxX;
+      const newY = Math.random() * maxY;
 
-      const newX = Math.floor(Math.random() * (maxX - padding) + padding);
-      const newY = Math.floor(Math.random() * (maxY - padding) + padding);
-
-      // aplicar nuevas coordenadas
       btnNo.style.left = `${newX}px`;
       btnNo.style.top = `${newY}px`;
     }
   </script>
 </body>
 </html>
-
