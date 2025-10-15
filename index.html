@@ -138,11 +138,12 @@
       const btnWidth = btnNo.offsetWidth;
       const btnHeight = btnNo.offsetHeight;
 
-      const maxX = window.innerWidth - btnWidth - 20;
-      const maxY = window.innerHeight - btnHeight - 20;
+      const padding = 30; // margen para que no se salga
+      const maxX = window.innerWidth - btnWidth - padding;
+      const maxY = window.innerHeight - btnHeight - padding;
 
-      const newX = Math.random() * maxX;
-      const newY = Math.random() * maxY;
+      const newX = Math.random() * (maxX - padding) + padding;
+      const newY = Math.random() * (maxY - padding) + padding;
 
       btnNo.style.left = `${newX}px`;
       btnNo.style.top = `${newY}px`;
