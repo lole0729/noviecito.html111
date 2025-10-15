@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>¿Quieres ser mi noviecito?</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", Arial, sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+      background-color: #ffeaf1;
+    }
+
+    .pantalla {
+      display: none;
+      width: 100%;
+      height: 100vh;
+      text-align: center;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+
+    .activa {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 1;
+    }
+
+    h1 {
+      font-size: 36px;
+      color: #ff4d6d;
+      animation: fadeIn 1s ease;
+    }
+
+    p {
+      font-size: 18px;
+      color: #4a2c2a;
+      max-width: 500px;
+      margin: 20px auto 0;
+      line-height: 1.5;
+      animation: fadeIn 1.5s ease;
+    }
+
+    #buttons {
+      margin-top: 25px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    button {
+      margin: 10px;
+      padding: 10px 25px;
+      font-size: 18px;
+      color: #fff;
+      background-color: #ff4d6d;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      background-color: #ff7b9c;
+    }
+
+    #btnNo {
+      background-color: #f44336;
+      position: absolute;
+      transition: all 0.4s ease;
+    }
+
+    #btnNo:hover {
+      background-color: #d32f2f;
+    }
+
+    #pantallaPregunta {
+      background-color: #fff0f5;
+    }
+
+    #pantallaRespuesta {
+      background-color: #ffe0e9;
+      color: #4a2c2a;
+    }
+
+    /* Animaciones */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Pantalla 1 -->
+  <div class="pantalla activa" id="pantallaPregunta">
+    <h1>¿Quieres ser mi noviecito? 💞</h1>
+    <div id="buttons">
+      <button onclick="mostrarRespuesta()" id="btnSi">Sí 💖</button>
+      <button id="btnNo" onmouseover="mueveElBoton()">No 😜</button>
+    </div>
+  </div>
+
+  <!-- Pantalla 2 -->
+  <div class="pantalla" id="pantallaRespuesta">
+    <h1>¡Gracias por aceptar ser mi noviooo! 💘</h1>
+    <p>Quiero que sepas que eres una persona muy especial para mí y estoy muy emocionada de comenzar esta hermosa relación contigo.  
+      ¡Prometo hacerte muy feliz cada día! 💕</p>
+  </div>
+
+  <script>
+    function mostrarRespuesta() {
+      document.getElementById("pantallaPregunta").classList.remove("activa");
+      document.getElementById("pantallaRespuesta").classList.add("activa");
+    }
+
+    function mueveElBoton() {
+      const btnNo = document.getElementById("btnNo");
+      const btnWidth = btnNo.offsetWidth;
+      const btnHeight = btnNo.offsetHeight;
+
+      const maxX = window.innerWidth - btnWidth - 20;
+      const maxY = window.innerHeight - btnHeight - 20;
+
+      const newX = Math.random() * maxX;
+      const newY = Math.random() * maxY;
+
+      btnNo.style.left = `${newX}px`;
+      btnNo.style.top = `${newY}px`;
+    }
+  </script>
+</body>
+</html>
